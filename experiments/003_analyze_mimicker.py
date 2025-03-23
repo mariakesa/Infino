@@ -2,7 +2,7 @@
 import matplotlib.pyplot as plt
 from infino.world.bouncing_ball import BouncingBallWorld
 from infino.agents.mimicker import MimickerAgent
-from infino.agents.sparse_autoencoder_ import SparseAutoencoder
+from infino.agents.sparse_autoencoder import SparseAutoencoder
 import torch
 
 # Step 1: Simulate world
@@ -19,13 +19,13 @@ mimicker.train_on_data(x, y, epochs=300, lr=0.01)
 hidden = mimicker.get_hidden_activations(x)
 
 #print(hidden.shape)
-print(hidden)
+#print(hidden)
 
 plt.plot(hidden)
 plt.show()
 
 # Step 4: Train Sparse Autoencoder
-autoencoder = SparseAutoencoder(input_dim=hidden.shape[1], latent_dim=4, sparsity_lambda=1e-3)
+autoencoder = SparseAutoencoder(input_dim=hidden.shape[1], latent_dim=4, sparsity_lambda=1e-4)
 losses = autoencoder.train_on_data(hidden, epochs=300, lr=0.01)
 
 # Step 5: Visualize latent codes

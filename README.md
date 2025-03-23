@@ -61,3 +61,9 @@ If you're driven by learning, compression, and understanding, you're welcome her
 
 Infino is the first step.
 
+## 🧠 Architecture Diagram
+
+<p align="center">
+  <img src="docs/infino_architecture.svg" width="600" alt="Infino Architecture Diagram"/>
+</p>
+

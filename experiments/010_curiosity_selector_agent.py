@@ -3,7 +3,8 @@ import torch
 import numpy as np
 import matplotlib.pyplot as plt
 from infino.world.bouncing_ball import BouncingBallWorld
-from infino.agents.selector_agent_curious import CuriousSelectorAgent
+#from infino.agents.selector_agent_curious_dirichlet import CuriousSelectorAgent
+from infino.agents.selector_agent_curious_dirichlet import CuriousSelectorAgentDirichlet
 import torch.nn.functional as F
 
 # 1. Simulate world
@@ -13,7 +14,7 @@ x = trajectory["x"][:-1]
 y = trajectory["x"][1:]
 
 # 2. Initialize curious agent
-agent = CuriousSelectorAgent(
+agent = CuriousSelectorAgentDirichlet(
     input_dim=1,
     latent_dim=8,
     num_thoughts=12,

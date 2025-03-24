@@ -37,18 +37,28 @@ class CuriousSelectorAgent(nn.Module):
 
         if training:
             # Encourage curiosity: bias logits toward less-used thoughts
-            #curiosity_weight=10.0
-            curiosity_bonus = (1.0/(1.0 + self.usage_counts)).to(logits.device)
-            #print(curiosity_bonus)
-            boosted_logits = logits + curiosity_bonus
+            curiosity_bonus = (1.0 / (1.0 + self.usage_counts)).to(logits.device)
+            
+            # Normalize curiosity_bonus
+            bonus_log = torch.log(curiosity_bonus + 1e-8)
+            bonus_mean = bonus_log.mean()
+            bonus_std = bonus_log.std(unbiased=False)
+            
+            # Match logit's standard deviation
+            logits_std = logits.std(unbiased=False)
+            scaled_bonus = (bonus_log - bonus_mean) / (bonus_std + 1e-8) * logits_std
+
+            # Debug print
+            import numpy as np
+            print(np.max(scaled_bonus.detach().cpu().numpy()), np.max(logits.detach().cpu().numpy()))
+
+            boosted_logits = logits + scaled_bonus
         else:
-            alpha=0.01
-            curiosity_bonus = (1.0/(1.0 + self.usage_counts)).to(logits.device)
-            boosted_logits = logits + alpha * curiosity_bonus
+            boosted_logits = logits + logits
         
         sf=nn.Softmax(dim=-1)
         distr = sf(boosted_logits)
-        print(distr)
+        #print(distr)
         gumbel_weights = F.gumbel_softmax(boosted_logits, tau=self.temperature, hard=self.hard, dim=-1)
         
 

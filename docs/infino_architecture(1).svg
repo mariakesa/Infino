@@ -1,0 +1,51 @@
+
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+  <!-- Thought Bank -->
+  <rect x="50" y="200" width="150" height="200" fill="#f0f8ff" stroke="#005f73" stroke-width="2" rx="10" />
+  <text x="125" y="190" text-anchor="middle" font-weight="bold" fill="#005f73">Thought Bank</text>
+  
+  <!-- Thoughts -->
+  <circle cx="125" cy="230" r="15" fill="#94d2bd" />
+  <circle cx="125" cy="270" r="15" fill="#94d2bd" />
+  <circle cx="125" cy="310" r="15" fill="#94d2bd" />
+  <circle cx="125" cy="350" r="15" fill="#94d2bd" />
+
+  <!-- Selector Network -->
+  <rect x="300" y="180" width="200" height="240" fill="#e0fbfc" stroke="#3d5a80" stroke-width="2" rx="10" />
+  <text x="400" y="170" text-anchor="middle" font-weight="bold" fill="#3d5a80">Selector Network</text>
+
+  <!-- Input stimulus -->
+  <circle cx="400" cy="140" r="20" fill="#ffb703" stroke="#fb8500" stroke-width="2" />
+  <text x="400" y="145" text-anchor="middle" font-size="12" fill="#000">Stimulus</text>
+
+  <!-- Arrows from stimulus to selector -->
+  <line x1="400" y1="160" x2="400" y2="180" stroke="#000" marker-end="url(#arrow)" />
+
+  <!-- Gumbel softmax / routing output -->
+  <line x1="350" y1="250" x2="200" y2="230" stroke="#000" marker-end="url(#arrow)" />
+  <line x1="350" y1="270" x2="200" y2="270" stroke="#000" marker-end="url(#arrow)" />
+  <line x1="350" y1="290" x2="200" y2="310" stroke="#000" marker-end="url(#arrow)" />
+
+  <text x="250" y="360" text-anchor="middle" font-size="12" fill="#555">Stochastic selection<br/>of thoughts</text>
+
+  <!-- Decoder -->
+  <rect x="600" y="250" width="150" height="100" fill="#ffe6a7" stroke="#ca6702" stroke-width="2" rx="10" />
+  <text x="675" y="245" text-anchor="middle" font-weight="bold" fill="#ca6702">Decoder</text>
+
+  <!-- Line from selector to decoder -->
+  <line x1="500" y1="300" x2="600" y2="300" stroke="#000" marker-end="url(#arrow)" />
+
+  <!-- Output -->
+  <circle cx="775" cy="300" r="20" fill="#219ebc" stroke="#023047" stroke-width="2" />
+  <text x="775" y="305" text-anchor="middle" font-size="12" fill="#fff">Output</text>
+
+  <!-- Arrow from decoder to output -->
+  <line x1="750" y1="300" x2="755" y2="300" stroke="#000" marker-end="url(#arrow)" />
+
+  <!-- Marker for arrows -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#000" />
+    </marker>
+  </defs>
+</svg>

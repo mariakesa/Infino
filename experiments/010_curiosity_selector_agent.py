@@ -6,7 +6,8 @@ from infino.world.bouncing_ball import BouncingBallWorld
 from infino.agents.selector_agent_curious import CuriousSelectorAgent
 #from infino.agents.selector_agent_curious_dirichlet import CuriousSelectorAgentDirichlet
 import torch.nn.functional as F
-
+from infino.agents.selector_agent_curious_bn import CuriousSelectorAgent
+from infino.agents.selector_agent_curious import CuriousSelectorAgent
 # 1. Simulate world
 world = BouncingBallWorld()
 trajectory = world.simulate(n_steps=300)
